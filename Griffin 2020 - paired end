@@ -1,0 +1,56 @@
+#enter wsl
+#activate qiime 
+conda activate qiime2-2023.2
+
+#downloading files from SRA Explorer
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/071/SRR11456971/SRR11456971_1.fastq.gz -o SRR11456971_16S_sequencing_of_blue_mussel_gut_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/071/SRR11456971/SRR11456971_2.fastq.gz -o SRR11456971_16S_sequencing_of_blue_mussel_gut_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/056/SRR11456956/SRR11456956_1.fastq.gz -o SRR11456956_16S_sequencing_of_blue_mussel_gut_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/056/SRR11456956/SRR11456956_2.fastq.gz -o SRR11456956_16S_sequencing_of_blue_mussel_gut_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/069/SRR11456969/SRR11456969_1.fastq.gz -o SRR11456969_16S_sequencing_of_blue_mussel_gut_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/069/SRR11456969/SRR11456969_2.fastq.gz -o SRR11456969_16S_sequencing_of_blue_mussel_gut_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/070/SRR11456970/SRR11456970_1.fastq.gz -o SRR11456970_16S_sequencing_of_blue_mussel_gut_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/070/SRR11456970/SRR11456970_2.fastq.gz -o SRR11456970_16S_sequencing_of_blue_mussel_gut_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/059/SRR11456959/SRR11456959_1.fastq.gz -o SRR11456959_16S_sequencing_of_blue_mussel_gut_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/059/SRR11456959/SRR11456959_2.fastq.gz -o SRR11456959_16S_sequencing_of_blue_mussel_gut_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/055/SRR11456955/SRR11456955_1.fastq.gz -o SRR11456955_16S_sequencing_of_blue_mussel_gut_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/055/SRR11456955/SRR11456955_2.fastq.gz -o SRR11456955_16S_sequencing_of_blue_mussel_gut_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/051/SRR11456951/SRR11456951_1.fastq.gz -o SRR11456951_16S_sequencing_of_blue_mussel_gut_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/051/SRR11456951/SRR11456951_2.fastq.gz -o SRR11456951_16S_sequencing_of_blue_mussel_gut_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/054/SRR11456954/SRR11456954_1.fastq.gz -o SRR11456954_16S_sequencing_of_blue_mussel_gut_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/054/SRR11456954/SRR11456954_2.fastq.gz -o SRR11456954_16S_sequencing_of_blue_mussel_gut_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/052/SRR11456952/SRR11456952_1.fastq.gz -o SRR11456952_16S_sequencing_of_blue_mussel_gut_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/052/SRR11456952/SRR11456952_2.fastq.gz -o SRR11456952_16S_sequencing_of_blue_mussel_gut_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/053/SRR11456953/SRR11456953_1.fastq.gz -o SRR11456953_16S_sequencing_of_blue_mussel_gut_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/053/SRR11456953/SRR11456953_2.fastq.gz -o SRR11456953_16S_sequencing_of_blue_mussel_gut_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/050/SRR11456950/SRR11456950_1.fastq.gz -o SRR11456950_16S_sequencing_of_blue_mussel_gut_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR114/050/SRR11456950/SRR11456950_2.fastq.gz -o SRR11456950_16S_sequencing_of_blue_mussel_gut_2.fastq.gz
+
+#getting the absolute file paths, for forward reads first and then for reverse reads  
+ls -d "$PWD/"*_1.fastq.gz
+ls -d "$PWD/"*_2.fastq.gz
+
+#changing file from .txt to demux.qza (change name of study)
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path Griffin_manifest.txt \
+  --output-path Griffin-paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+
+  #visualizing the demultiplixing - it changes qza to qzv//change name of study// paired or single end
+#use qiime 2 view to upload the .qzv file to decide on a truncating length for next step. 150 nucleotides
+  qiime demux summarize \
+  --i-data Griffin-paired-end-demux.qza \
+  --o-visualization Griffin-demux.qzv
+
+  #using DATA2 to only keep good qulaity reads: trim is for starting point, truncate is for how many bases 
+#code for paired-end reads 
+qiime dada2 denoise-paired \
+--i-demultiplexed-seqs Griffin-paired-end-demux.qza \
+--p-trunc-len-f 150 \
+--p-trunc-len-r 150 \
+--p-trim-left-f 0 \
+--p-trim-left-r 0 \
+--o-representative-sequences Griffin-paired-end-rep-seqs.qza \
+--o-table Griffin-paired-end-table.qza \
+--o-denoising-stats Griffin-paired-end-stats-dada.qza
