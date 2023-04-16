@@ -1,0 +1,192 @@
+#terminal: ssh username@quest.northwestern.edu
+ssh nst8960@quest.northwestern.edu
+
+#will enter password
+cd /projects/p31966/ntaqatqa
+
+#if returning to home directory
+cd ~/
+
+#create study folder inside personal folder
+mkdir Shi 
+cd Shi
+
+#download .gz files from SRA Explorer
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/027/SRR15041627/SRR15041627_1.fastq.gz -o SRR15041627_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/027/SRR15041627/SRR15041627_2.fastq.gz -o SRR15041627_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/032/SRR15041632/SRR15041632_1.fastq.gz -o SRR15041632_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/032/SRR15041632/SRR15041632_2.fastq.gz -o SRR15041632_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/033/SRR15041633/SRR15041633_1.fastq.gz -o SRR15041633_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/033/SRR15041633/SRR15041633_2.fastq.gz -o SRR15041633_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/025/SRR15041625/SRR15041625_1.fastq.gz -o SRR15041625_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/025/SRR15041625/SRR15041625_2.fastq.gz -o SRR15041625_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/026/SRR15041626/SRR15041626_1.fastq.gz -o SRR15041626_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/026/SRR15041626/SRR15041626_2.fastq.gz -o SRR15041626_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/028/SRR15041628/SRR15041628_1.fastq.gz -o SRR15041628_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/028/SRR15041628/SRR15041628_2.fastq.gz -o SRR15041628_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+
+#for first species: Hydrophis_curtus
+#getting the absolute file paths, for forward reads first and then for reverse reads  
+ls -d "$PWD/"*_1.fastq.gz
+ls -d "$PWD/"*_2.fastq.gz
+
+#creating manifest.txt file
+#in terminal
+vim Shi2_manifest.text
+i
+
+#will copy paste spreadsheet in here
+#esc tab to exit, and :wq to save. Press enter
+:wq 
+
+#request memory to compute - exit login mode and enter compute node: we can change partition to normal
+srun --account=p31966 --time=2:00:00 --partition=normal --mem=4G --pty bash
+
+#loading qiime2
+module avail
+module load qiime2/2022.8
+
+#creating demux.qza file from manifest.txt
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path Shi2_manifest.text \
+  --output-path Shi2-paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+
+#visualizing the demultiplixing - it changes qza to qzv//change name of study// paired or paired end
+#use qiime 2 view to upload the .qzv file to decide on a truncating length for next step. 150 nucleotides
+#use cyberduck to download .qzv file after creating it: SSh| 22| quest.northwestern.edu| nst8960| netid password
+qiime demux summarize \
+--i-data Shi2-paired-end-demux.qza \
+--o-visualization Shi2-demux.qzv
+
+#using DATA2 to only keep good qulaity reads: trim is for starting point, truncate is for how many bases
+#the very first line should include the #! 
+vim Shi2_dada2.sh
+i
+#!/bin/bash
+#SBATCH -J dada2
+#SBATCH --mail-type=ALL
+#SBATCH -A p31966
+#SBATCH --mail-user=nourtaqatqa2025@u.northwestern.edu
+#SBATCH -N 1
+#SBATCH -n 6
+#SBATCH --mem=24G
+#SBATCH -t 48:00:00
+#SBATCH -p normal
+#SBATCH --output=output.log  
+
+module purge all
+module load qiime2/2022.8 
+
+qiime dada2 denoise-paired \
+--i-demultiplexed-seqs Shi2-paired-end-demux.qza \
+--p-trunen-f 150 \
+--p-trunen-r 150 \
+--p-trieft-f 0 \
+--p-trieft-r 0 \
+--p-n-threads 0 \
+--o-representative-sequences Shi2-paired-end-rep-seqs.qza \
+--o-table Shi2-paired-end-table.qza \
+--o-denoising-stats Shi2-paired-end-stats-dada.qza
+
+echo "Finishing dada2 job"
+
+#save and exist : press esc 
+:wq
+
+#authorizing the sh file we just created: make sure you're in the directory of demux.qza file
+chmod u+x Shi2_dada2.sh
+
+#submitting the job
+sbatch Shi2_dada2.sh
+
+## species 2: Hydrophis cyanocinctus
+#download .gz files from SRA Explorer
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/027/SRR15041627/SRR15041627_1.fastq.gz -o SRR15041627_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/027/SRR15041627/SRR15041627_2.fastq.gz -o SRR15041627_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/032/SRR15041632/SRR15041632_1.fastq.gz -o SRR15041632_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/032/SRR15041632/SRR15041632_2.fastq.gz -o SRR15041632_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/033/SRR15041633/SRR15041633_1.fastq.gz -o SRR15041633_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/033/SRR15041633/SRR15041633_2.fastq.gz -o SRR15041633_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/025/SRR15041625/SRR15041625_1.fastq.gz -o SRR15041625_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/025/SRR15041625/SRR15041625_2.fastq.gz -o SRR15041625_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/026/SRR15041626/SRR15041626_1.fastq.gz -o SRR15041626_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/026/SRR15041626/SRR15041626_2.fastq.gz -o SRR15041626_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/028/SRR15041628/SRR15041628_1.fastq.gz -o SRR15041628_Hydrophis_curtus_gut_microbiota_16S_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR150/028/SRR15041628/SRR15041628_2.fastq.gz -o SRR15041628_Hydrophis_curtus_gut_microbiota_16S_2.fastq.gz
+
+#getting the absolute file paths, for forward reads first and then for reverse reads  
+ls -d "$PWD/"*_1.fastq.gz
+ls -d "$PWD/"*_2.fastq.gz
+
+#creating manifest.txt file
+#in terminal
+vim Shi2_manifest.text
+i
+
+#will copy paste spreadsheet in here
+#esc tab to exit, and :wq to save. Press enter
+:wq 
+
+#request memory to compute - exit login mode and enter compute node: we can change partition to normal
+srun --account=p31966 --time=2:00:00 --partition=normal --mem=4G --pty bash
+
+#loading qiime2
+module avail
+module load qiime2/2022.8
+
+#creating demux.qza file from manifest.txt
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path Shi2_manifest.text \
+  --output-path Shi2-paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+
+#visualizing the demultiplixing - it changes qza to qzv//change name of study// paired or paired end
+#use qiime 2 view to upload the .qzv file to decide on a truncating length for next step. 150 nucleotides
+#use cyberduck to download .qzv file after creating it: SSh| 22| quest.northwestern.edu| nst8960| netid password
+qiime demux summarize \
+--i-data Shi2-paired-end-demux.qza \
+--o-visualization Shi2-demux.qzv
+
+#using DATA2 to only keep good qulaity reads: trim is for starting point, truncate is for how many bases
+#the very first line should include the #! 
+vim Shi2_dada2.sh
+i
+#!/bin/bash
+#SBATCH -J dada2
+#SBATCH --mail-type=ALL
+#SBATCH -A p31966
+#SBATCH --mail-user=nourtaqatqa2025@u.northwestern.edu
+#SBATCH -N 1
+#SBATCH -n 6
+#SBATCH --mem=24G
+#SBATCH -t 48:00:00
+#SBATCH -p normal
+#SBATCH --output=output.log  
+
+module purge all
+module load qiime2/2022.8 
+
+qiime dada2 denoise-paired \
+--i-demultiplexed-seqs Shi2-paired-end-demux.qza \
+--p-trunen-f 150 \
+--p-trunen-r 150 \
+--p-trieft-f 0 \
+--p-trieft-r 0 \
+--p-n-threads 0 \
+--o-representative-sequences Shi2-paired-end-rep-seqs.qza \
+--o-table Shi2-paired-end-table.qza \
+--o-denoising-stats Shi2-paired-end-stats-dada.qza
+
+echo "Finishing dada2 job"
+
+#save and exist : press esc 
+:wq
+
+#authorizing the sh file we just created: make sure you're in the directory of demux.qza file
+chmod u+x Shi2_dada2.sh
+
+#submitting the job
+sbatch Shi2_dada2.sh
