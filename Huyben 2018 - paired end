@@ -1,0 +1,92 @@
+#enter wsl
+#activate qiime 
+conda activate qiime2-2023.2
+
+#SRA Explorer
+#downloading files from SRA Explorer
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/000/SRR6053820/SRR6053820_1.fastq.gz -o SRR6053820_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/000/SRR6053820/SRR6053820_2.fastq.gz -o SRR6053820_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/007/SRR6053817/SRR6053817_1.fastq.gz -o SRR6053817_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/007/SRR6053817/SRR6053817_2.fastq.gz -o SRR6053817_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/009/SRR6053819/SRR6053819_1.fastq.gz -o SRR6053819_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/009/SRR6053819/SRR6053819_2.fastq.gz -o SRR6053819_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/001/SRR6053821/SRR6053821_1.fastq.gz -o SRR6053821_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/001/SRR6053821/SRR6053821_2.fastq.gz -o SRR6053821_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/006/SRR6053816/SRR6053816_1.fastq.gz -o SRR6053816_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/006/SRR6053816/SRR6053816_2.fastq.gz -o SRR6053816_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/008/SRR6053818/SRR6053818_1.fastq.gz -o SRR6053818_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/008/SRR6053818/SRR6053818_2.fastq.gz -o SRR6053818_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/004/SRR6053814/SRR6053814_1.fastq.gz -o SRR6053814_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/004/SRR6053814/SRR6053814_2.fastq.gz -o SRR6053814_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/002/SRR6053812/SRR6053812_1.fastq.gz -o SRR6053812_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/002/SRR6053812/SRR6053812_2.fastq.gz -o SRR6053812_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/003/SRR6053813/SRR6053813_1.fastq.gz -o SRR6053813_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/003/SRR6053813/SRR6053813_2.fastq.gz -o SRR6053813_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/005/SRR6053815/SRR6053815_1.fastq.gz -o SRR6053815_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/005/SRR6053815/SRR6053815_2.fastq.gz -o SRR6053815_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/001/SRR6053811/SRR6053811_1.fastq.gz -o SRR6053811_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/001/SRR6053811/SRR6053811_2.fastq.gz -o SRR6053811_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/000/SRR6053810/SRR6053810_1.fastq.gz -o SRR6053810_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/000/SRR6053810/SRR6053810_2.fastq.gz -o SRR6053810_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/008/SRR6053808/SRR6053808_1.fastq.gz -o SRR6053808_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/008/SRR6053808/SRR6053808_2.fastq.gz -o SRR6053808_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/009/SRR6053809/SRR6053809_1.fastq.gz -o SRR6053809_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/009/SRR6053809/SRR6053809_2.fastq.gz -o SRR6053809_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/007/SRR6053807/SRR6053807_1.fastq.gz -o SRR6053807_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/007/SRR6053807/SRR6053807_2.fastq.gz -o SRR6053807_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/006/SRR6053806/SRR6053806_1.fastq.gz -o SRR6053806_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/006/SRR6053806/SRR6053806_2.fastq.gz -o SRR6053806_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/005/SRR6053805/SRR6053805_1.fastq.gz -o SRR6053805_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/005/SRR6053805/SRR6053805_2.fastq.gz -o SRR6053805_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/004/SRR6053804/SRR6053804_1.fastq.gz -o SRR6053804_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/004/SRR6053804/SRR6053804_2.fastq.gz -o SRR6053804_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/003/SRR6053803/SRR6053803_1.fastq.gz -o SRR6053803_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/003/SRR6053803/SRR6053803_2.fastq.gz -o SRR6053803_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/001/SRR6053801/SRR6053801_1.fastq.gz -o SRR6053801_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/001/SRR6053801/SRR6053801_2.fastq.gz -o SRR6053801_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/009/SRR6053799/SRR6053799_1.fastq.gz -o SRR6053799_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/009/SRR6053799/SRR6053799_2.fastq.gz -o SRR6053799_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/000/SRR6053800/SRR6053800_1.fastq.gz -o SRR6053800_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/000/SRR6053800/SRR6053800_2.fastq.gz -o SRR6053800_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/002/SRR6053802/SRR6053802_1.fastq.gz -o SRR6053802_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/002/SRR6053802/SRR6053802_2.fastq.gz -o SRR6053802_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/008/SRR6053798/SRR6053798_1.fastq.gz -o SRR6053798_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/008/SRR6053798/SRR6053798_2.fastq.gz -o SRR6053798_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/007/SRR6053797/SRR6053797_1.fastq.gz -o SRR6053797_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/007/SRR6053797/SRR6053797_2.fastq.gz -o SRR6053797_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/006/SRR6053796/SRR6053796_1.fastq.gz -o SRR6053796_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/006/SRR6053796/SRR6053796_2.fastq.gz -o SRR6053796_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/005/SRR6053795/SRR6053795_1.fastq.gz -o SRR6053795_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/005/SRR6053795/SRR6053795_2.fastq.gz -o SRR6053795_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/004/SRR6053794/SRR6053794_1.fastq.gz -o SRR6053794_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/004/SRR6053794/SRR6053794_2.fastq.gz -o SRR6053794_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/003/SRR6053793/SRR6053793_1.fastq.gz -o SRR6053793_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/003/SRR6053793/SRR6053793_2.fastq.gz -o SRR6053793_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/002/SRR6053792/SRR6053792_1.fastq.gz -o SRR6053792_16S_rRNA_of_rainbow_trout_gut_bacteria_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR605/002/SRR6053792/SRR6053792_2.fastq.gz -o SRR6053792_16S_rRNA_of_rainbow_trout_gut_bacteria_2.fastq.gz
+
+#getting the absolute file paths, for forward reads first and then for reverse reads  
+ls -d "$PWD/"*_1.fastq.gz
+ls -d "$PWD/"*_2.fastq.gz
+
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path Huyben_manifest.txt \
+  --output-path Huyben-paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+
+#visualizing the demultiplixing - it changes qza to qzv//change name of study// paired or single end
+#use qiime 2 view to upload the .qzv file to decide on a truncating length for next step. 150 nucleotides
+  qiime demux summarize \
+  --i-data Huyben-paired-end-demux.qza \
+  --o-visualization Huyben-demux.qzv
+
+  qiime dada2 denoise-paired \
+--i-demultiplexed-seqs Huyben-paired-end-demux.qza \
+--p-trunc-len-f 150 \
+--p-trunc-len-r 150 \
+--p-trim-left-f 0 \
+--p-trim-left-r 0 \
+--o-representative-sequences Huyben-paired-end-rep-seqs.qza \
+--o-table Huyben-paired-end-table.qza \
+--o-denoising-stats Huyben-paired-end-stats-dada.qza
