@@ -1,0 +1,118 @@
+#enter wsl
+#activate qiime 
+conda activate qiime2-2023.2
+
+#SRA Explorer
+#downloading files from SRA Explorer
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/001/SRR5097431/SRR5097431_1.fastq.gz -o SRR5097431_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/001/SRR5097431/SRR5097431_2.fastq.gz -o SRR5097431_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/002/SRR5097432/SRR5097432_1.fastq.gz -o SRR5097432_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/002/SRR5097432/SRR5097432_2.fastq.gz -o SRR5097432_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/003/SRR5097433/SRR5097433_1.fastq.gz -o SRR5097433_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/003/SRR5097433/SRR5097433_2.fastq.gz -o SRR5097433_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/004/SRR5097434/SRR5097434_1.fastq.gz -o SRR5097434_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/004/SRR5097434/SRR5097434_2.fastq.gz -o SRR5097434_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/005/SRR5097435/SRR5097435_1.fastq.gz -o SRR5097435_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/005/SRR5097435/SRR5097435_2.fastq.gz -o SRR5097435_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/006/SRR5097436/SRR5097436_1.fastq.gz -o SRR5097436_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/006/SRR5097436/SRR5097436_2.fastq.gz -o SRR5097436_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/009/SRR5097439/SRR5097439_1.fastq.gz -o SRR5097439_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/009/SRR5097439/SRR5097439_2.fastq.gz -o SRR5097439_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/007/SRR5097437/SRR5097437_1.fastq.gz -o SRR5097437_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/007/SRR5097437/SRR5097437_2.fastq.gz -o SRR5097437_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/001/SRR5097441/SRR5097441_1.fastq.gz -o SRR5097441_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/001/SRR5097441/SRR5097441_2.fastq.gz -o SRR5097441_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/000/SRR5097440/SRR5097440_1.fastq.gz -o SRR5097440_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/000/SRR5097440/SRR5097440_2.fastq.gz -o SRR5097440_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/008/SRR5097438/SRR5097438_1.fastq.gz -o SRR5097438_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/008/SRR5097438/SRR5097438_2.fastq.gz -o SRR5097438_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/002/SRR5097442/SRR5097442_1.fastq.gz -o SRR5097442_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/002/SRR5097442/SRR5097442_2.fastq.gz -o SRR5097442_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/004/SRR5097444/SRR5097444_1.fastq.gz -o SRR5097444_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/004/SRR5097444/SRR5097444_2.fastq.gz -o SRR5097444_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/005/SRR5097445/SRR5097445_1.fastq.gz -o SRR5097445_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/005/SRR5097445/SRR5097445_2.fastq.gz -o SRR5097445_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/006/SRR5097446/SRR5097446_1.fastq.gz -o SRR5097446_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/006/SRR5097446/SRR5097446_2.fastq.gz -o SRR5097446_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/007/SRR5097447/SRR5097447_1.fastq.gz -o SRR5097447_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/007/SRR5097447/SRR5097447_2.fastq.gz -o SRR5097447_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/008/SRR5097448/SRR5097448_1.fastq.gz -o SRR5097448_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/008/SRR5097448/SRR5097448_2.fastq.gz -o SRR5097448_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/003/SRR5097443/SRR5097443_1.fastq.gz -o SRR5097443_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/003/SRR5097443/SRR5097443_2.fastq.gz -o SRR5097443_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/000/SRR5097450/SRR5097450_1.fastq.gz -o SRR5097450_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/000/SRR5097450/SRR5097450_2.fastq.gz -o SRR5097450_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/009/SRR5097449/SRR5097449_1.fastq.gz -o SRR5097449_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/009/SRR5097449/SRR5097449_2.fastq.gz -o SRR5097449_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/001/SRR5097451/SRR5097451_1.fastq.gz -o SRR5097451_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/001/SRR5097451/SRR5097451_2.fastq.gz -o SRR5097451_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/003/SRR5097453/SRR5097453_1.fastq.gz -o SRR5097453_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/003/SRR5097453/SRR5097453_2.fastq.gz -o SRR5097453_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/002/SRR5097452/SRR5097452_1.fastq.gz -o SRR5097452_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/002/SRR5097452/SRR5097452_2.fastq.gz -o SRR5097452_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/004/SRR5097454/SRR5097454_1.fastq.gz -o SRR5097454_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/004/SRR5097454/SRR5097454_2.fastq.gz -o SRR5097454_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/006/SRR5097456/SRR5097456_1.fastq.gz -o SRR5097456_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/006/SRR5097456/SRR5097456_2.fastq.gz -o SRR5097456_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/005/SRR5097455/SRR5097455_1.fastq.gz -o SRR5097455_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/005/SRR5097455/SRR5097455_2.fastq.gz -o SRR5097455_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/007/SRR5097457/SRR5097457_1.fastq.gz -o SRR5097457_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/007/SRR5097457/SRR5097457_2.fastq.gz -o SRR5097457_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/008/SRR5097458/SRR5097458_1.fastq.gz -o SRR5097458_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/008/SRR5097458/SRR5097458_2.fastq.gz -o SRR5097458_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/009/SRR5097459/SRR5097459_1.fastq.gz -o SRR5097459_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/009/SRR5097459/SRR5097459_2.fastq.gz -o SRR5097459_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/000/SRR5097460/SRR5097460_1.fastq.gz -o SRR5097460_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR509/000/SRR5097460/SRR5097460_2.fastq.gz -o SRR5097460_V4_16S_rRNA_amplion_reads_from_the_gut_of_Siganus_fuscescens_2.fastq.gz
+
+#getting the absolute file paths, for forward reads first and then for reverse reads  
+ls -d "$PWD/"*_1.fastq.gz
+ls -d "$PWD/"*_2.fastq.gz
+#if it were a single end read, do up until the star
+
+#changing file from .txt to demux.qza (change name of study)
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path Nielsen_manifest.txt \
+  --output-path Nielsen-paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+# if it were a single end, just change Paired to Single and don't add anything in type [SequencesWithQuality] 
+
+#visualizing the demultiplixing - it changes qza to qzv//change name of study// paired or single end
+#use qiime 2 view to upload the .qzv file to decide on a truncating length for next step. 150 nucleotides
+  qiime demux summarize \
+  --i-data Nielsen-paired-end-demux.qza \
+  --o-visualization Nielsen-demux.qzv
+
+#using DATA2 to only keep good qulaity reads: trim is for starting point, truncate is for how many bases 
+#code for paired-end reads 
+qiime dada2 denoise-paired \
+--i-demultiplexed-seqs Nielsen-paired-end-demux.qza \
+--p-trunc-len-f 150 \
+--p-trunc-len-r 150 \
+--p-trim-left-f 0 \
+--p-trim-left-r 0 \
+--o-representative-sequences Nielsen-paired-end-rep-seqs.qza \
+--o-table Nielsen-paired-end-table.qza \
+--o-denoising-stats Nielsen-paired-end-stats-dada.qza
+
+#didn't use for Nielsen study
+#code for single-end reads 
+qiime dada2 denoise-single \
+--i-demultiplexed-seqs studyname-single-end-demux.qza \
+--p-trunc-len 150 \
+--p-trim-left 0 \
+--o-representative-sequences studyname-single-end-rep-seqs.qza \
+--o-table studyname-single-end-table.qza \
+--o-denoising-stats studyname-single-end-stats-dada.qza
+
+# for getting the output files faster, use --p 6
+qiime dada2 denoise-paired \
+--i-demultiplexed-seqs Nielsen-paired-end-demux.qza \
+--p-trunc-len-f 150 \
+--p-trunc-len-r 150 \
+--p-trim-left-f 0 \
+--p-trim-left-r 0 \ --p 6\
+--o-representative-sequences Nielsen-paired-end-rep-seqs.qza \
+--o-table Nielsen-paired-end-table.qza \
+--o-denoising-stats Nielsen-paired-end-stats-dada.qza
