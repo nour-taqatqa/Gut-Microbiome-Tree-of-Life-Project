@@ -1,0 +1,71 @@
+#enter wsl
+#activate qiime 
+conda activate qiime2-2023.2
+
+#SRA Explorer
+#downloading files from SRA Explorer
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/008/SRR4776658/SRR4776658_1.fastq.gz -o SRR4776658_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Fungi_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/008/SRR4776658/SRR4776658_2.fastq.gz -o SRR4776658_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Fungi_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/004/SRR4776654/SRR4776654_1.fastq.gz -o SRR4776654_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Intact_yeast_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/004/SRR4776654/SRR4776654_2.fastq.gz -o SRR4776654_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Intact_yeast_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/006/SRR4776656/SRR4776656_1.fastq.gz -o SRR4776656_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Intact_yeast_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/006/SRR4776656/SRR4776656_2.fastq.gz -o SRR4776656_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Intact_yeast_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/002/SRR4776662/SRR4776662_1.fastq.gz -o SRR4776662_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Fungi_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/002/SRR4776662/SRR4776662_2.fastq.gz -o SRR4776662_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Fungi_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/003/SRR4776663/SRR4776663_1.fastq.gz -o SRR4776663_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Blue_mussel_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/003/SRR4776663/SRR4776663_2.fastq.gz -o SRR4776663_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Blue_mussel_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/000/SRR4776660/SRR4776660_1.fastq.gz -o SRR4776660_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Fungi_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/000/SRR4776660/SRR4776660_2.fastq.gz -o SRR4776660_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Fungi_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/009/SRR4776669/SRR4776669_1.fastq.gz -o SRR4776669_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/009/SRR4776669/SRR4776669_2.fastq.gz -o SRR4776669_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/004/SRR4776664/SRR4776664_1.fastq.gz -o SRR4776664_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Blue_mussel_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/004/SRR4776664/SRR4776664_2.fastq.gz -o SRR4776664_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Blue_mussel_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/005/SRR4776665/SRR4776665_1.fastq.gz -o SRR4776665_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/005/SRR4776665/SRR4776665_2.fastq.gz -o SRR4776665_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/007/SRR4776667/SRR4776667_1.fastq.gz -o SRR4776667_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/007/SRR4776667/SRR4776667_2.fastq.gz -o SRR4776667_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/003/SRR4776673/SRR4776673_1.fastq.gz -o SRR4776673_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Extracted_yeast_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/003/SRR4776673/SRR4776673_2.fastq.gz -o SRR4776673_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Extracted_yeast_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/005/SRR4776675/SRR4776675_1.fastq.gz -o SRR4776675_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Extracted_yeast_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/005/SRR4776675/SRR4776675_2.fastq.gz -o SRR4776675_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Extracted_yeast_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/009/SRR4776679/SRR4776679_1.fastq.gz -o SRR4776679_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Extracted_yeast_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/009/SRR4776679/SRR4776679_2.fastq.gz -o SRR4776679_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Extracted_yeast_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/007/SRR4776677/SRR4776677_1.fastq.gz -o SRR4776677_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Extracted_yeast_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/007/SRR4776677/SRR4776677_2.fastq.gz -o SRR4776677_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Extracted_yeast_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/001/SRR4776681/SRR4776681_1.fastq.gz -o SRR4776681_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Extracted_yeast_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/001/SRR4776681/SRR4776681_2.fastq.gz -o SRR4776681_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Extracted_yeast_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/004/SRR4776684/SRR4776684_1.fastq.gz -o SRR4776684_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Intact_yeast_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/004/SRR4776684/SRR4776684_2.fastq.gz -o SRR4776684_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Intact_yeast_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/006/SRR4776686/SRR4776686_1.fastq.gz -o SRR4776686_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/006/SRR4776686/SRR4776686_2.fastq.gz -o SRR4776686_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/002/SRR4776682/SRR4776682_1.fastq.gz -o SRR4776682_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/002/SRR4776682/SRR4776682_2.fastq.gz -o SRR4776682_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/008/SRR4776688/SRR4776688_1.fastq.gz -o SRR4776688_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/008/SRR4776688/SRR4776688_2.fastq.gz -o SRR4776688_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Ref_fish_meal_diet_distal_intestine_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/000/SRR4776690/SRR4776690_1.fastq.gz -o SRR4776690_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Blue_mussel_diet_distal_intestine_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR477/000/SRR4776690/SRR4776690_2.fastq.gz -o SRR4776690_16S_rRNA_of_Arctic_charr_gut_bacteria_fed_Blue_mussel_diet_distal_intestine_2.fastq.gz
+
+#getting the absolute file paths, for forward reads first and then for reverse reads  
+ls -d "$PWD/"*_1.fastq.gz
+ls -d "$PWD/"*_2.fastq.gz
+
+
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path Nyman_manifest.txt \
+  --output-path Nyman-paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+
+  qiime demux summarize \
+  --i-data Nyman-paired-end-demux.qza \
+  --o-visualization Nyman-demux.qzv
+
+  qiime dada2 denoise-paired \
+--i-demultiplexed-seqs Nyman-paired-end-demux.qza \
+--p-trunc-len-f 150 \
+--p-trunc-len-r 130 \
+--p-trim-left-f 0 \
+--p-trim-left-r 0 \
+--o-representative-sequences Nyman-paired-end-rep-seqs.qza \
+--o-table Nyman-paired-end-table.qza \
+--o-denoising-stats Nyman-paired-end-stats-dada.qza
