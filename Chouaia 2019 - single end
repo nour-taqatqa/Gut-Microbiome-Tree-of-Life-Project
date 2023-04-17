@@ -1,0 +1,37 @@
+#wsl
+#activate qiime 
+conda activate qiime2-2023.2
+
+#SRA Explorer
+#downloading files from SRA Explorer 
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR870/004/SRR8709634/SRR8709634.fastq.gz -o SRR8709634_microbiota_of_Popillia_japonica_Adult_Hindgut.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR870/002/SRR8709632/SRR8709632.fastq.gz -o SRR8709632_microbiota_of_Popillia_japonica_Adult_Hindgut.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR870/001/SRR8709631/SRR8709631.fastq.gz -o SRR8709631_microbiota_of_Popillia_japonica_Adult_Hindgut.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR870/006/SRR8709626/SRR8709626.fastq.gz -o SRR8709626_microbiota_of_Popillia_japonica_Adult_Hindgut.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR870/003/SRR8709633/SRR8709633.fastq.gz -o SRR8709633_microbiota_of_Popillia_japonica_Adult_Hindgut.fastq.gz
+
+#getting absolute file paths - single end 
+ls -d "$PWD/"*
+
+#changing file from .txt to demux.qza (change name of study) 
+qiime tools import \
+  --type 'SampleData[SequencesWithQuality]' \
+  --input-path Chouaia_manifest.txt \
+  --output-path Chouaia-single-end-demux.qza \
+  --input-format SingleEndFastqManifestPhred33V2
+
+#visualizing the demultiplixing - it changes qza to qzv//change name of study// paired or single end
+#use qiime 2 view to upload the .qzv file to decide on a truncating length for next step. 150 nucleotides
+  qiime demux summarize \
+  --i-data Chouaia-single-end-demux.qza \
+  --o-visualization Chouaia-demux.qzv
+
+#data 2 to keep good quality reads 
+#sigle end 
+ qiime dada2 denoise-single \
+--i-demultiplexed-seqs Chouaia-single-end-demux.qza \
+--p-trunc-len 145 \
+--p-trim-left 0 \
+--o-representative-sequences Chouaia-single-end-rep-seqs.qza \
+--o-table Chouaia-single-end-table.qza \
+--o-denoising-stats Chouaia-single-end-stats-dada.qza
