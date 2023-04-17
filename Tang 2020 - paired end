@@ -1,0 +1,56 @@
+#wsl
+#activate qiime 
+conda activate qiime2-2023.2
+
+#SRA Explorer
+#downloading files from SRA Explorer (-L deleted)
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/001/SRR10686501/SRR10686501_1.fastq.gz -o SRR10686501_Wild_DaChai_stream-Adult_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/001/SRR10686501/SRR10686501_2.fastq.gz -o SRR10686501_Wild_DaChai_stream-Adult_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/002/SRR10686502/SRR10686502_1.fastq.gz -o SRR10686502_Wild_DaChai_stream-Adult_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/002/SRR10686502/SRR10686502_2.fastq.gz -o SRR10686502_Wild_DaChai_stream-Adult_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/000/SRR10686500/SRR10686500_1.fastq.gz -o SRR10686500_Wild_DaChai_stream-Adult_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/000/SRR10686500/SRR10686500_2.fastq.gz -o SRR10686500_Wild_DaChai_stream-Adult_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/097/SRR10686497/SRR10686497_1.fastq.gz -o SRR10686497_Wild_DaChai_stream-Adult_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/097/SRR10686497/SRR10686497_2.fastq.gz -o SRR10686497_Wild_DaChai_stream-Adult_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/099/SRR10686499/SRR10686499_1.fastq.gz -o SRR10686499_Wild_DaChai_stream-Adult_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/099/SRR10686499/SRR10686499_2.fastq.gz -o SRR10686499_Wild_DaChai_stream-Adult_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/098/SRR10686498/SRR10686498_1.fastq.gz -o SRR10686498_Wild_DaChai_stream-Adult_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/098/SRR10686498/SRR10686498_2.fastq.gz -o SRR10686498_Wild_DaChai_stream-Adult_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/091/SRR10686491/SRR10686491_1.fastq.gz -o SRR10686491_Wild_YuSan_stream-Adult_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/091/SRR10686491/SRR10686491_2.fastq.gz -o SRR10686491_Wild_YuSan_stream-Adult_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/090/SRR10686490/SRR10686490_1.fastq.gz -o SRR10686490_Wild_YuSan_stream-Adult_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/090/SRR10686490/SRR10686490_2.fastq.gz -o SRR10686490_Wild_YuSan_stream-Adult_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/089/SRR10686489/SRR10686489_1.fastq.gz -o SRR10686489_Wild_YuSan_stream-Adult_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/089/SRR10686489/SRR10686489_2.fastq.gz -o SRR10686489_Wild_YuSan_stream-Adult_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/088/SRR10686488/SRR10686488_1.fastq.gz -o SRR10686488_Wild_YuSan_stream-Adult_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/088/SRR10686488/SRR10686488_2.fastq.gz -o SRR10686488_Wild_YuSan_stream-Adult_2.fastq.gz
+
+#getting the absolute file paths, for forward reads first and then for reverse reads  
+ls -d "$PWD/"*_1.fastq.gz
+ls -d "$PWD/"*_2.fastq.gz
+
+#changing file from .txt to demux.qza(change name of study/paired or single end)
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path Tang_manifest.txt \
+  --output-path Tang-paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+
+#visualizing the demultiplixing - changes qza to qzv//change name of study// paired or single end
+#upload .qzv file to qiime 2 View to decide on a truncating length for next step. 150 nucleotides
+ qiime demux summarize \
+  --i-data Tang-paired-end-demux.qza \
+  --o-visualization Tang-demux.qzv
+
+#using DATA2 to only keep good qulaity reads: trim is for starting point, truncate is for how many bases 
+#code for paired-end reads 
+qiime dada2 denoise-paired \
+--i-demultiplexed-seqs Tang-paired-end-demux.qza \
+--p-trunc-len-f 140 \
+--p-trunc-len-r 150 \
+--p-trim-left-f 0 \
+--p-trim-left-r 0 \
+--o-representative-sequences Tang-paired-end-rep-seqs.qza \
+--o-table Tang-paired-end-table.qza \
+--o-denoising-stats Tang-paired-end-stats-dada.qza
+ 
