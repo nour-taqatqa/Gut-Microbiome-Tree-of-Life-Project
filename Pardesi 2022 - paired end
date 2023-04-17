@@ -1,0 +1,96 @@
+#wsl
+#activate qiime 
+conda activate qiime2-2023.2
+
+#SRA Explorer
+#downloading files from SRA Explorer
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/000/ERR3585830/ERR3585830_1.fastq.gz -o ERR3585830_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/000/ERR3585830/ERR3585830_2.fastq.gz -o ERR3585830_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/005/ERR3585835/ERR3585835_1.fastq.gz -o ERR3585835_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/005/ERR3585835/ERR3585835_2.fastq.gz -o ERR3585835_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/004/ERR3585834/ERR3585834_1.fastq.gz -o ERR3585834_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/004/ERR3585834/ERR3585834_2.fastq.gz -o ERR3585834_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/001/ERR3585831/ERR3585831_1.fastq.gz -o ERR3585831_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/001/ERR3585831/ERR3585831_2.fastq.gz -o ERR3585831_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/002/ERR3585832/ERR3585832_1.fastq.gz -o ERR3585832_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/002/ERR3585832/ERR3585832_2.fastq.gz -o ERR3585832_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/003/ERR3585833/ERR3585833_1.fastq.gz -o ERR3585833_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/003/ERR3585833/ERR3585833_2.fastq.gz -o ERR3585833_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/006/ERR3585836/ERR3585836_1.fastq.gz -o ERR3585836_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/006/ERR3585836/ERR3585836_2.fastq.gz -o ERR3585836_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/009/ERR3585839/ERR3585839_1.fastq.gz -o ERR3585839_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/009/ERR3585839/ERR3585839_2.fastq.gz -o ERR3585839_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/007/ERR3585837/ERR3585837_1.fastq.gz -o ERR3585837_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/007/ERR3585837/ERR3585837_2.fastq.gz -o ERR3585837_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/000/ERR3585840/ERR3585840_1.fastq.gz -o ERR3585840_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/000/ERR3585840/ERR3585840_2.fastq.gz -o ERR3585840_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/001/ERR3585841/ERR3585841_1.fastq.gz -o ERR3585841_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/001/ERR3585841/ERR3585841_2.fastq.gz -o ERR3585841_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/008/ERR3585838/ERR3585838_1.fastq.gz -o ERR3585838_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/008/ERR3585838/ERR3585838_2.fastq.gz -o ERR3585838_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/005/ERR3585845/ERR3585845_1.fastq.gz -o ERR3585845_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/005/ERR3585845/ERR3585845_2.fastq.gz -o ERR3585845_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/004/ERR3585844/ERR3585844_1.fastq.gz -o ERR3585844_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/004/ERR3585844/ERR3585844_2.fastq.gz -o ERR3585844_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/002/ERR3585842/ERR3585842_1.fastq.gz -o ERR3585842_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/002/ERR3585842/ERR3585842_2.fastq.gz -o ERR3585842_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/006/ERR3585846/ERR3585846_1.fastq.gz -o ERR3585846_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/006/ERR3585846/ERR3585846_2.fastq.gz -o ERR3585846_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/007/ERR3585847/ERR3585847_1.fastq.gz -o ERR3585847_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/007/ERR3585847/ERR3585847_2.fastq.gz -o ERR3585847_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/003/ERR3585843/ERR3585843_1.fastq.gz -o ERR3585843_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/003/ERR3585843/ERR3585843_2.fastq.gz -o ERR3585843_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/009/ERR3585849/ERR3585849_1.fastq.gz -o ERR3585849_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/009/ERR3585849/ERR3585849_2.fastq.gz -o ERR3585849_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/001/ERR3585851/ERR3585851_1.fastq.gz -o ERR3585851_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/001/ERR3585851/ERR3585851_2.fastq.gz -o ERR3585851_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/000/ERR3585850/ERR3585850_1.fastq.gz -o ERR3585850_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/000/ERR3585850/ERR3585850_2.fastq.gz -o ERR3585850_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/002/ERR3585852/ERR3585852_1.fastq.gz -o ERR3585852_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/002/ERR3585852/ERR3585852_2.fastq.gz -o ERR3585852_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/008/ERR3585848/ERR3585848_1.fastq.gz -o ERR3585848_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/008/ERR3585848/ERR3585848_2.fastq.gz -o ERR3585848_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/003/ERR3585853/ERR3585853_1.fastq.gz -o ERR3585853_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/003/ERR3585853/ERR3585853_2.fastq.gz -o ERR3585853_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/005/ERR3585855/ERR3585855_1.fastq.gz -o ERR3585855_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/005/ERR3585855/ERR3585855_2.fastq.gz -o ERR3585855_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/006/ERR3585856/ERR3585856_1.fastq.gz -o ERR3585856_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/006/ERR3585856/ERR3585856_2.fastq.gz -o ERR3585856_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/007/ERR3585857/ERR3585857_1.fastq.gz -o ERR3585857_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/007/ERR3585857/ERR3585857_2.fastq.gz -o ERR3585857_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/004/ERR3585854/ERR3585854_1.fastq.gz -o ERR3585854_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/004/ERR3585854/ERR3585854_2.fastq.gz -o ERR3585854_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/008/ERR3585858/ERR3585858_1.fastq.gz -o ERR3585858_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/008/ERR3585858/ERR3585858_2.fastq.gz -o ERR3585858_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/009/ERR3585859/ERR3585859_1.fastq.gz -o ERR3585859_Illumina_MiSeq_paired_end_sequencing_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/ERR358/009/ERR3585859/ERR3585859_2.fastq.gz -o ERR3585859_Illumina_MiSeq_paired_end_sequencing_2.fastq.gz
+
+#getting the absolute file paths, for forward reads first and then for reverse reads  
+ls -d "$PWD/"*_1.fastq.gz
+ls -d "$PWD/"*_2.fastq.gz
+
+#changing file from .txt to demux.qza(change name of study)
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path Pardesi_manifest.txt \
+  --output-path Pardesi-paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+
+#visualizing the demultiplixing - changes qza to qzv//change name of study// paired or single end
+#use qiime 2 view to upload the .qzv file to decide on a truncating length for next step. 150 nucleotides
+ qiime demux summarize \
+  --i-data Pardesi-paired-end-demux.qza \
+  --o-visualization Pardesi-demux.qzv 
+  
+#using DATA2 to only keep good qulaity reads: trim is for starting point, truncate is for how many bases 
+#code for paired-end reads 
+qiime dada2 denoise-paired \
+--i-demultiplexed-seqs Pardesi-paired-end-demux.qza \
+--p-trunc-len-f 150 \
+--p-trunc-len-r 150 \
+--p-trim-left-f 0 \
+--p-trim-left-r 0 \
+--o-representative-sequences Pardesi-paired-end-rep-seqs.qza \
+--o-table Pardesi-paired-end-table.qza \
+--o-denoising-stats Pardesi-paired-end-stats-dada.qza
+ 
