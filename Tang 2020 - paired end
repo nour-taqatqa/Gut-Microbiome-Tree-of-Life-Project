@@ -1,6 +1,11 @@
-#wsl
-#activate qiime 
-conda activate qiime2-2023.2
+#terminal: ssh username@quest.northwestern.edu
+ssh nst8960@quest.northwestern.edu
+
+#will enter password
+
+#create study folder inside personal folder
+mkdir Tang  
+cd Tang 
 
 #SRA Explorer
 #downloading files from SRA Explorer (-L deleted)
@@ -29,28 +34,72 @@ curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR106/088/SRR10686488/SRR10686488_2.fas
 ls -d "$PWD/"*_1.fastq.gz
 ls -d "$PWD/"*_2.fastq.gz
 
-#changing file from .txt to demux.qza(change name of study/paired or single end)
+#creating manifest.txt file
+#in terminal
+vim Tang-Crocodilurus_manifest.text
+i
+#will copy paste spreadsheet in here
+#esc tab to exit, and :wq to save. Press enter
+:wq 
+
+#request memory to compute - exit login mode and enter compute node: we can change partition to normal
+srun --account=p31966 --time=2:00:00 --partition=normal --mem=4G --pty bash -l
+
+#loading qiime2
+module avail
+module load qiime2/2022.8
+
+#creating demux.qza file from manifest.txt
 qiime tools import \
   --type 'SampleData[PairedEndSequencesWithQuality]' \
-  --input-path Tang_manifest.txt \
-  --output-path Tang-paired-end-demux.qza \
+  --input-path Tang-Crocodilurus_manifest.text \
+  --output-path Tang-Crocodilurus-paired-end-demux.qza \
   --input-format PairedEndFastqManifestPhred33V2
 
-#visualizing the demultiplixing - changes qza to qzv//change name of study// paired or single end
-#upload .qzv file to qiime 2 View to decide on a truncating length for next step. 150 nucleotides
- qiime demux summarize \
-  --i-data Tang-paired-end-demux.qza \
-  --o-visualization Tang-demux.qzv
+#visualizing the demultiplixing - it changes qza to qzv//change name of study// paired or paired end
+#use qiime 2 view to upload the .qzv file to decide on a truncating length for next step. 150 nucleotides
+#use cyberduck to download .qzv file after creating it: SSh| 22| quest.northwestern.edu| nst8960| netid password
+qiime demux summarize \
+--i-data Tang-Crocodilurus-paired-end-demux.qza \
+--o-visualization Tang-Crocodilurus-demux.qzv
 
-#using DATA2 to only keep good qulaity reads: trim is for starting point, truncate is for how many bases 
-#code for paired-end reads 
+#using DATA2 to only keep good qulaity reads: trim is for starting point, truncate is for how many bases
+#the very first line should include the #! 
+vim Tang-Crocodilurus_dada2.sh
+i
+#!/bin/bash
+#SBATCH -J dada2
+#SBATCH --mail-type=ALL
+#SBATCH -A p31966
+#SBATCH --mail-user=nourtaqatqa2025@u.northwestern.edu
+#SBATCH -N 1
+#SBATCH -n 6
+#SBATCH --mem=24G
+#SBATCH -t 48:00:00
+#SBATCH -p normal
+#SBATCH --output=output.log  
+
+module purge all
+module load qiime2/2022.8 
+
 qiime dada2 denoise-paired \
---i-demultiplexed-seqs Tang-paired-end-demux.qza \
---p-trunc-len-f 140 \
+--i-demultiplexed-seqs Tang-Crocodilurus-paired-end-demux.qza \
+--p-trunc-len-f 150 \
 --p-trunc-len-r 150 \
 --p-trim-left-f 0 \
 --p-trim-left-r 0 \
---o-representative-sequences Tang-paired-end-rep-seqs.qza \
---o-table Tang-paired-end-table.qza \
---o-denoising-stats Tang-paired-end-stats-dada.qza
- 
+--p-n-threads 0 \
+--o-representative-sequences Tang-Crocodilurus-paired-end-rep-seqs.qza \
+--o-table Tang-Crocodilurus-paired-end-table.qza \
+--o-denoising-stats Tang-Crocodilurus-paired-end-stats-dada.qza
+
+echo "Finishing dada2 job"
+
+#save and exist : press esc 
+:wq
+
+#authorizing the sh file we just created: make sure you're in the directory of demux.qza file
+chmod u+x Tang-Crocodilurus_dada2.sh
+
+#submitting the job
+sbatch Tang-Crocodilurus_dada2.sh
