@@ -1,0 +1,88 @@
+#terminal: ssh username@quest.northwestern.edu
+ssh nst8960@quest.northwestern.edu
+
+#Work in homedirectory ~cd
+
+#create study folder inside personal folder
+mkdir Wei 
+cd Wei
+
+#download .gz files from SRA Explorer
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR104/013/SRR10447213/SRR10447213.fastq.gz -o SRR10447213_16S_rRNA-Seq_of_female_Portunus_trituberculatus_in_BK_group.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR104/024/SRR10447224/SRR10447224.fastq.gz -o SRR10447224_16S_rRNA-Seq_of_female_Portunus_trituberculatus_in_BK_group.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR104/025/SRR10447225/SRR10447225.fastq.gz -o SRR10447225_16S_rRNA-Seq_of_female_Portunus_trituberculatus_in_BK_group.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR104/009/SRR10447209/SRR10447209.fastq.gz -o SRR10447209_16S_rRNA-Seq_of_female_Portunus_trituberculatus_in_BK_group.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR104/008/SRR10447208/SRR10447208.fastq.gz -o SRR10447208_16S_rRNA-Seq_of_female_Portunus_trituberculatus_in_BK_group.fastq.gz
+
+#getting the absolute file paths: make a normal spreadsheet and copy paths - write sample id
+ls -d "$PWD/"*
+
+#creating manifest.txt file
+#in terminal
+vim Wei_manifest.text
+i
+#will copy paste spreadsheet in here
+#esc tab to exit, and :wq to save. Press enter
+:wq 
+
+#request memory to compute - exit login mode and enter compute node: we can change partition to normal
+srun --account=p31966 --time=2:00:00 --partition=normal --mem=4G --pty bash -l
+
+#loading qiime2
+module avail
+module load qiime2/2022.8
+
+#creating demux.qza file from manifest.txt
+qiime tools import \
+  --type 'SampleData[SequencesWithQuality]' \
+  --input-path Wei_manifest.text \
+  --output-path Wei-single-end-demux.qza \
+  --input-format SingleEndFastqManifestPhred33V2
+
+#visualizing the demultiplixing - it changes qza to qzv//change name of study// paired or single end
+#use qiime 2 view to upload the .qzv file to decide on a truncating length for next step. 150 nucleotides
+#use cyberduck to download .qzv file after creating it: SSh| 22| quest.northwestern.edu| nst8960| netid password
+qiime demux summarize \
+--i-data Wei-single-end-demux.qza \
+--o-visualization Wei-demux.qzv
+
+#using DATA2 to only keep good qulaity reads: trim is for starting point, truncate is for how many bases
+#the very first line should include the #! 
+vim Wei_dada2.sh
+i
+#!/bin/bash
+#SBATCH -J dada2
+#SBATCH --mail-type=ALL
+#SBATCH -A p31966
+#SBATCH --mail-user=nourtaqatqa2025@u.northwestern.edu
+#SBATCH -N 1
+#SBATCH -n 6
+#SBATCH --mem=24G
+#SBATCH -t 48:00:00
+#SBATCH -p normal
+#SBATCH --output=output.log  
+
+module purge all
+module load qiime2/2022.8 
+
+qiime dada2 denoise-paired \
+--i-demultiplexed-seqs Wei-single-end-demux.qza \
+--p-trunc-len-f 150 \
+--p-trunc-len-r 150 \
+--p-trim-left-f 0 \
+--p-trim-left-r 0 \
+--p-n-threads 0 \
+--o-representative-sequences Wei-single-end-rep-seqs.qza \
+--o-table Wei-single-end-table.qza \
+--o-denoising-stats Wei-single-end-stats-dada.qza
+
+echo "Finishing dada2 job"
+
+#save and exist : press esc 
+:wq
+
+#authorizing the sh file we just created: make sure you're in the directory of demux.qza file
+chmod u+x Wei_dada2.sh
+
+#submitting the job
+sbatch Wei_dada2.sh
