@@ -1,0 +1,139 @@
+#terminal: ssh username@quest.northwestern.edu
+ssh nst8960@quest.northwestern.edu
+
+#create study folder inside personal folder
+mkdir Silva  
+cd Silva 
+
+#download .gz files from SRA Explorer
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/063/SRR18609463/SRR18609463_1.fastq.gz -o SRR18609463_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/063/SRR18609463/SRR18609463_2.fastq.gz -o SRR18609463_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/060/SRR18609460/SRR18609460_1.fastq.gz -o SRR18609460_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/060/SRR18609460/SRR18609460_2.fastq.gz -o SRR18609460_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/062/SRR18609462/SRR18609462_1.fastq.gz -o SRR18609462_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/062/SRR18609462/SRR18609462_2.fastq.gz -o SRR18609462_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/058/SRR18609458/SRR18609458_1.fastq.gz -o SRR18609458_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/058/SRR18609458/SRR18609458_2.fastq.gz -o SRR18609458_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/059/SRR18609459/SRR18609459_1.fastq.gz -o SRR18609459_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/059/SRR18609459/SRR18609459_2.fastq.gz -o SRR18609459_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/061/SRR18609461/SRR18609461_1.fastq.gz -o SRR18609461_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/061/SRR18609461/SRR18609461_2.fastq.gz -o SRR18609461_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/053/SRR18609453/SRR18609453_1.fastq.gz -o SRR18609453_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/053/SRR18609453/SRR18609453_2.fastq.gz -o SRR18609453_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/055/SRR18609455/SRR18609455_1.fastq.gz -o SRR18609455_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/055/SRR18609455/SRR18609455_2.fastq.gz -o SRR18609455_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/057/SRR18609457/SRR18609457_1.fastq.gz -o SRR18609457_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/057/SRR18609457/SRR18609457_2.fastq.gz -o SRR18609457_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/054/SRR18609454/SRR18609454_1.fastq.gz -o SRR18609454_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/054/SRR18609454/SRR18609454_2.fastq.gz -o SRR18609454_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/056/SRR18609456/SRR18609456_1.fastq.gz -o SRR18609456_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/056/SRR18609456/SRR18609456_2.fastq.gz -o SRR18609456_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/052/SRR18609452/SRR18609452_1.fastq.gz -o SRR18609452_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/052/SRR18609452/SRR18609452_2.fastq.gz -o SRR18609452_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/048/SRR18609448/SRR18609448_1.fastq.gz -o SRR18609448_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/048/SRR18609448/SRR18609448_2.fastq.gz -o SRR18609448_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/051/SRR18609451/SRR18609451_1.fastq.gz -o SRR18609451_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/051/SRR18609451/SRR18609451_2.fastq.gz -o SRR18609451_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/050/SRR18609450/SRR18609450_1.fastq.gz -o SRR18609450_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/050/SRR18609450/SRR18609450_2.fastq.gz -o SRR18609450_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/047/SRR18609447/SRR18609447_1.fastq.gz -o SRR18609447_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/047/SRR18609447/SRR18609447_2.fastq.gz -o SRR18609447_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/049/SRR18609449/SRR18609449_1.fastq.gz -o SRR18609449_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/049/SRR18609449/SRR18609449_2.fastq.gz -o SRR18609449_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/046/SRR18609446/SRR18609446_1.fastq.gz -o SRR18609446_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/046/SRR18609446/SRR18609446_2.fastq.gz -o SRR18609446_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/044/SRR18609444/SRR18609444_1.fastq.gz -o SRR18609444_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/044/SRR18609444/SRR18609444_2.fastq.gz -o SRR18609444_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/045/SRR18609445/SRR18609445_1.fastq.gz -o SRR18609445_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/045/SRR18609445/SRR18609445_2.fastq.gz -o SRR18609445_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/043/SRR18609443/SRR18609443_1.fastq.gz -o SRR18609443_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/043/SRR18609443/SRR18609443_2.fastq.gz -o SRR18609443_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/042/SRR18609442/SRR18609442_1.fastq.gz -o SRR18609442_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/042/SRR18609442/SRR18609442_2.fastq.gz -o SRR18609442_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/041/SRR18609441/SRR18609441_1.fastq.gz -o SRR18609441_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/041/SRR18609441/SRR18609441_2.fastq.gz -o SRR18609441_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/040/SRR18609440/SRR18609440_1.fastq.gz -o SRR18609440_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/040/SRR18609440/SRR18609440_2.fastq.gz -o SRR18609440_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/039/SRR18609439/SRR18609439_1.fastq.gz -o SRR18609439_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/039/SRR18609439/SRR18609439_2.fastq.gz -o SRR18609439_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/038/SRR18609438/SRR18609438_1.fastq.gz -o SRR18609438_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/038/SRR18609438/SRR18609438_2.fastq.gz -o SRR18609438_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/037/SRR18609437/SRR18609437_1.fastq.gz -o SRR18609437_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/037/SRR18609437/SRR18609437_2.fastq.gz -o SRR18609437_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/036/SRR18609436/SRR18609436_1.fastq.gz -o SRR18609436_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/036/SRR18609436/SRR18609436_2.fastq.gz -o SRR18609436_mosquito_metagenome_2.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/035/SRR18609435/SRR18609435_1.fastq.gz -o SRR18609435_mosquito_metagenome_1.fastq.gz
+curl ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR186/035/SRR18609435/SRR18609435_2.fastq.gz -o SRR18609435_mosquito_metagenome_2.fastq.gz
+
+#getting the absolute file paths, for forward reads first and then for reverse reads  
+ls -d "$PWD/"*_1.fastq.gz
+ls -d "$PWD/"*_2.fastq.gz
+
+#creating manifest.txt file
+#in terminal
+vim Silva_manifest.text
+i
+#will copy paste spreadsheet in here
+#esc tab to exit, and :wq to save. Press enter
+:wq 
+
+#request memory to compute - exit login mode and enter compute node: we can change partition to normal
+srun --account=p31966 --time=2:00:00 --partition=normal --mem=4G --pty bash
+
+#loading qiime2
+module load qiime2/2022.8
+
+#creating demux.qza file from manifest.txt
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path Silva_manifest.text \
+  --output-path Silva-paired-end-demux.qza \
+  --input-format PairedEndFastqManifestPhred33V2
+
+#visualizing the demultiplixing - it changes qza to qzv//change name of study// paired or paired end
+#use qiime 2 view to upload the .qzv file to decide on a truncating length for next step. 150 nucleotides
+#use cyberduck to download .qzv file after creating it: SSh| 22| quest.northwestern.edu| nst8960| netid password
+qiime demux summarize \
+--i-data Silva-paired-end-demux.qza \
+--o-visualization Silva-demux.qzv
+
+#using DATA2 to only keep good qulaity reads: trim is for starting point, truncate is for how many bases
+#the very first line should include the #! 
+vim Silva_dada2.sh
+i
+#!/bin/bash
+#SBATCH -J dada2
+#SBATCH --mail-type=ALL
+#SBATCH -A p31966
+#SBATCH --mail-user=nourtaqatqa2025@u.northwestern.edu
+#SBATCH -N 1
+#SBATCH -n 6
+#SBATCH --mem=24G
+#SBATCH -t 48:00:00
+#SBATCH -p normal
+#SBATCH --output=output.log  
+
+module purge all
+module load qiime2/2022.8 
+
+qiime dada2 denoise-paired \
+--i-demultiplexed-seqs Silva-paired-end-demux.qza \
+--p-trunen-f 150 \
+--p-trunen-r 150 \
+--p-trieft-f 0 \
+--p-trieft-r 0 \
+--p-n-threads 0 \
+--o-representative-sequences Silva-paired-end-rep-seqs.qza \
+--o-table Silva-paired-end-table.qza \
+--o-denoising-stats Silva-paired-end-stats-dada.qza
+
+echo "Finishing dada2 job"
+
+#save and exist : press esc 
+:wq
+
+#authorizing the sh file we just created: make sure you're in the directory of demux.qza file
+chmod u+x Silva_dada2.sh
+
+#submitting the job
+sbatch Silva_dada2.sh
