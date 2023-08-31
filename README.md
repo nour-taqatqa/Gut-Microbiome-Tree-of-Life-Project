@@ -7,6 +7,4 @@ Bioinformatics tools were utlized to compile the metadata according to parameter
 
 With regards to the stoarge of the data, nodes on a Northwestern Universitys cluster computer (QUEST) were allocated for our project, and multiple terabyte worth of data is stored there. 
 
-This project is part of the thesis for Samuel Degregori, a postdoc at the Amato Lab at Northwestern University.
-
-https://www.poopomics.com/
+This project is part of the thesis for Samuel Degregori, a postdoc at the Amato Lab at Northwestern University: https://www.poopomics.com/
